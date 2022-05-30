@@ -1,0 +1,68 @@
+
+
+
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mappers/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+server:
+  servlet:
+    session:
+      tracking-modes: cookie
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 500MB #设置允许传输的图片大小
+      max-request-size: 2048MB
+  jackson: #设置获得的时间格式
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  datasource:
+    username: root
+    password: 147258
+    url: jdbc:mysql://localhost:3306/fleaMarket?useSSL=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  http:
+    multipart:
+      location: /data/upload_tmp
+  mail:
+    host: smtp.qq.com #设置邮箱主机
+    protocol: smtps
+    username: 2582085906@qq.com #配置用户名
+    password: wsmjyrjyucgfdjgi #配置开启STMP服务的授权码（上面获取到的授权码）
+    properties:
+      mail:
+        stmp:
+          port: 465
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+            required: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+    default-encoding: UTF-8
+
+#设置token
+jwt:
+  header: token
+  secret: 123456
+  route:
+    authentication:
+      path: /logging
+
+mybatis-plus:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mappers/*.xml
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+    <!--
+        environments：配置多个连接数据库的环境
+        属性：
+            default：设置默认使用的环境的id
+    -->
+    <typeAliases>
+        <package name="com.cy.fleamarket.pojo"/>
+    </typeAliases>
+
+
+    <environments default="test">
+        <!--
+            environment：配置某个具体的环境
+            属性：
+                id：表示连接数据库的环境的唯一标识，不能重复
+        -->
+
+
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/fleaMarket?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
+                <property name="username" value="root"/>
+                <property name="password" value="147258"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+</configuration>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cy.fleamarket.mapper.TradeMapper">
+
+    <!--public List<Map<Object,Object>> selectSoldTradeByphone(String phone);-->
+    <select id="selectSoldTradeByphone" resultType="map">
+        SELECT commodity.*,trade.`trade_time` ,trade.sellstatus FROM commodity JOIN trade ON commodity.id=trade.id AND trade.seller=#{phone} AND (trade.sellstatus='交易成功' OR trade.sellstatus='挂起')
+    </select>
+
+    <!--public List<Map<Object,Object>> selectBuyTradeByphone(String phone);-->
+    <select id="selectBuyTradeByphone" resultType="map">
+        SELECT commodity.*,trade.`trade_time` ,trade.sellstatus FROM commodity JOIN trade ON commodity.id=trade.id AND trade.buyer=#{phone} AND trade.sellstatus='交易成功'
+    </select>
+
+    <!--public Map<Object,Object> selectTradeCommodity(int id);-->
+    <select id="selectTradeCommodity" resultType="map">
+        SELECT commodity.*,trade.`trade_time`,trade.sellstatus FROM commodity JOIN trade ON commodity.id=#{id} and trade.id=#{id}
+    </select>
+
+</mapper>
